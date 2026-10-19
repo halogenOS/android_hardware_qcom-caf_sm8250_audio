@@ -41,10 +41,7 @@ target_board_platform_cc_library_shared {
         "msm8974/platform.c",
         "voice_extn/compress_voip.c",
         "voice_extn/voice_extn.c",
-    ] + select(soong_config_variable("qtiaudio", "feature_ext_amplifier"), {
-        "true": ["audio_extn/audio_amplifier.c"],
-        default: [],
-    }) + select(soong_config_variable("qtiaudio", "feature_gef_support"), {
+    ] + select(soong_config_variable("qtiaudio", "feature_gef_support"), {
         "true": ["audio_extn/gef.c"],
         default: [],
     }) + select(soong_config_variable("qtiaudio", "feature_sound_trigger"), {
@@ -56,10 +53,7 @@ target_board_platform_cc_library_shared {
         "-Werror",
         "-D_GNU_SOURCE",
         "-DHW_VARIANTS_ENABLED",
-    ] + select(soong_config_variable("qtiaudio", "feature_ext_amplifier"), {
-        "true": ["-DEXT_AMPLIFIER_ENABLED"],
-        default: [],
-    }) + select(soong_config_variable("qtiaudio", "feature_extended_compress_format"), {
+    ] + select(soong_config_variable("qtiaudio", "feature_extended_compress_format"), {
         "true": ["-DENABLE_EXTENDED_COMPRESS_FORMAT"],
         default: [],
     }) + select(soong_config_variable("qtiaudio", "feature_gef_support"), {
@@ -138,10 +132,7 @@ target_board_platform_cc_library_shared {
         "libtinyalsa",
         "libtinycompress",
         "libutils",
-    ] + select(soong_config_variable("qtiaudio", "feature_ext_amplifier"), {
-        "true": ["libhardware"],
-        default: [],
-    }),
+    ],
 
     sanitize: {
         integer_overflow: true,
